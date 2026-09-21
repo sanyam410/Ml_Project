@@ -12,6 +12,6 @@ src/Components/__init__.py
 src/Components/data_ingestion.py
 src/Components/data_transformation.py
 src/Components/model_training.py
+src/Pipelines/Predict_pipeline.py
 src/Pipelines/__init__.py
-src/Pipelines/predict.py
 src/Pipelines/train_pipeline.py

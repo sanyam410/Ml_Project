@@ -4,5 +4,7 @@ pandas
 matplotlib
 catboost
 xgboost
+flask
 scikit-learn
+dill
 -e .
