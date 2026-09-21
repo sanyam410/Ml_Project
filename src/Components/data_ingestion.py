@@ -7,6 +7,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.Components.data_transformation import DataTransformation
+from src.Components.data_transformation import DataTransformationConfig
+
 @dataclass
 class DataIngestionConfig:
     train_data_path: str = "artifacts/train.csv"
@@ -32,15 +35,17 @@ class DataIngestion:
 
             logging.info("Ingestion of the dataset has been completed")
 
-            return(
+            return (
                 self.ingestion_config.train_data_path,
                 self.ingestion_config.test_data_path
             )
-        except:
-            pass
+        except Exception as e:
+            raise CustomException(e, sys) from e  # type: ignore[arg-type]
 
 if __name__ == "__main__":
-   obj = DataIngestion()
-   obj.initiate_data_ingestion()   
+    obj = DataIngestion()
+    train_data, test_data = obj.initiate_data_ingestion()
 
+    data_transformation = DataTransformation()
+    data_transformation.initiate_data_transformation(train_data, test_data)
 
